@@ -1,198 +1,1652 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dyre Studio - Innovation Meets Excellence</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
-    <!-- Hero Slide -->
-    <div class="slide active" id="slide1">
-        <div class="logo-container">
-            <div class="logo-inner">
-                <div class="logo-text">DYRE</div>
-                <div class="logo-line"></div>
-                <div class="logo-studio">STUDIO</div>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Image N Shape - Redesign</title>
+            <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet" />
+            <style>
+    body {
+        margin: 0;
+        font-family: 'Livvic', sans-serif;
+        background: #fdfdfd;
+        color: #222;
+    }
+    .carousel-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+    header {
+        display: flex;
+        justify-content: center; /* Center the header content */
+        align-items: center;
+        padding: 1rem 2rem;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        opacity: 0;
+        transform: translateY(-10px);
+        animation: fadeInSlideDown 0.5s ease-out 0.2s forwards;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    header > div { /* Direct child div to manage left and right parts */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .faq-section {
+        padding: 2rem 1rem;
+        text-align: left;
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out 2.6s forwards; /* Adjust delay as needed */
+        max-width: 1200px;
+        margin: 0 auto 3rem; /* Add margin below the section */
+    }
+
+    .faq-heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .faq-item {
+        background-color: #f9f9f9;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .faq-item:hover {
+        background-color: #eee;
+    }
+
+    .faq-number {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #555;
+        margin-right: 1rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+        color: #333;
+        margin: 0;
+        flex-grow: 1;
+    }
+
+    .faq-toggle {
+        font-size: 1.5rem;
+        color: #555;
+        font-weight: bold;
+    }
+
+    /* You'll need JavaScript to handle the FAQ toggle functionality */
+
+    /* Media Queries for mobile */
+    @media (max-width: 768px) {
+        .faq-heading {
+            font-size: 1.6rem;
+        }
+        .faq-item {
+            padding: 1rem;
+        }
+        .faq-number {
+            margin-right: 0.5rem;
+        }
+        .faq-question {
+            font-size: 0.9rem;
+        }
+        .faq-toggle {
+            font-size: 1.3rem;
+        }
+    }
+    .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .chatbot-button {
+        background-color: #e74c3c; /* Red background for the icon */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 25px; /* Circular shape */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .chatbot-button img {
+        width: 40px; /* Adjust icon size */
+        height: 40px; /* Adjust icon size */
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: white; /* Background for the speech bubble */
+    }
+
+    .chatbot-button span {
+        font-size: 0.9rem;
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .chatbot-button:hover {
+        background-color: #c0392b; /* Darker red on hover */
+    }
+
+    .chatbot-window {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        z-index: 999;
+        width: 300px;
+        height: 400px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        display: none; /* Initially hidden */
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chatbot-header {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    .chatbot-close-button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .chatbot-messages {
+        flex-grow: 1;
+        padding: 1rem;
+        overflow-y: auto;
+    }
+
+    .chatbot-input {
+        padding: 1rem;
+        border-top: 1px solid #ddd;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .chatbot-input input[type="text"] {
+        flex-grow: 1;
+        padding: 0.5rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    .chatbot-input button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+    .image-container {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .main-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+    .text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+.carousel-button {
+  background-color: #f05c5c;
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+.carousel-button:hover {
+  background-color: #d94747;
+}
+
+    .text-overlay h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .consultation-button {
+        background-color: #d37d28;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .consultation-button:hover {
+        background-color: #b86511;
+    }
+    .testimonials-section {
+        padding: 2rem 1rem;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out 2.2s forwards; /* Adjust delay as needed */
+        max-width: 1200px;
+        margin: 0 auto 3rem; /* Add margin below the section */
+    }
+
+    .testimonials-heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax as needed */
+        gap: 1.5rem;
+    }
+
+    .testimonial-card {
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    .testimonial-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.3rem;
+    }
+
+    .testimonial-designation {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-review {
+        font-size: 0.9rem;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    /* Media Queries for mobile */
+    @media (max-width: 768px) {
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
+        .testimonial-card {
+            text-align: center;
+        }
+    }
+    .book-consultation-section {
+        padding: 3rem 2rem;
+        text-align: left;
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out 2.2s forwards;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .consultation-card {
+        display: flex; /* Use flexbox for horizontal layout */
+        background-color: #f8f0fb; /* Light purple background */
+        border-radius: 15px;
+        overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+    }
+
+    .consultation-image {
+        width: 40%; /* Adjust as needed */
+        height: auto;
+        object-fit: cover; /* Maintain aspect ratio and cover the area */
+    }
+
+    .consultation-content {
+        padding: 2rem;
+        width: 60%; /* Adjust as needed */
+    }
+
+
+    .book-consultation-heading {
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #512b81; /* Dark purple */
+        margin-bottom: 1rem;
+    }
+
+    .book-consultation-text {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 2rem;
+    }
+
+    .book-consultation-button {
+        background-color: #d37d28; /* Orange color */
+        color: #fff;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-family: 'Livvic', sans-serif;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .book-consultation-button:hover {
+        background-color: #b86511; /* Darker orange on hover */
+    }
+
+    /* Media Queries for mobile */
+    @media (max-width: 768px) {
+        .book-consultation-section {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .consultation-card {
+            flex-direction: column; /* Stack image and content vertically on smaller screens */
+        }
+
+        .consultation-image {
+            width: 100%; /* Image takes full width on mobile */
+            height: auto;
+        }
+
+        .consultation-content {
+            width: 100%; /* Content takes full width on mobile */
+        }
+
+        .book-consultation-heading {
+            font-size: 1.8rem;
+        }
+
+        .book-consultation-text {
+            font-size: 1rem;
+        }
+
+        .book-consultation-button {
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+    }
+    .main-footer {
+        background-color: #222; /* Dark background as per image */
+        color: #fff;
+        padding: 2rem 1rem;
+        text-align: left;
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out 2.4s forwards; /* Adjust delay */
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-section {
+        margin-bottom: 2rem;
+    }
+
+    .footer-section h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #eee;
+        margin-bottom: 1rem;
+    }
+
+    .about-us p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .quick-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .quick-links ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .quick-links ul li a {
+        color: #ddd;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .quick-links ul li a:hover {
+        color: #fff;
+    }
+
+    .follow-us .social-links {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .follow-us .social-links img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #333; /* Placeholder for social icons */
+    }
+
+    .twitter-posts h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #eee;
+        margin-bottom: 0.5rem;
+    }
+
+    .twitter-scroll {
+        background-color: #333;
+        border-radius: 4px;
+        max-height: 150px; /* Adjust as needed */
+        overflow-y: auto;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .tweet {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #444;
+    }
+
+    .tweet:last-child {
+        border-bottom: none;
+    }
+
+    .tweet p {
+        margin: 0 0 0.3rem 0;
+        line-height: 1.4;
+    }
+
+    .tweet small {
+        color: #777;
+        display: block;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 1rem;
+        border-top: 1px solid #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 0.8rem;
+    }
+
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .footer-content {
+            grid-template-columns: 1fr; /* Stack sections on mobile */
+            text-align: center;
+        }
+
+        .footer-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .follow-us .social-links {
+            justify-content: center;
+        }
+    }
+    .blogs-section {
+        padding: 2rem 1rem;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out 2.2s forwards; /* Adjust delay as needed */
+        max-width: 1200px;
+        margin: 0 auto 3rem; /* Add margin below the section */
+    }
+
+    .blogs-heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .blogs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax as needed */
+        gap: 1.5rem;
+    }
+
+    .blog-card {
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        text-align: left;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .blog-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 1rem;
+        object-fit: cover;
+        max-height: 200px; /* Limit image height */
+    }
+
+    .blog-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-excerpt {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .blog-link {
+        color: #222;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .blog-link:hover {
+        color: #555;
+    }
+
+    .view-all-blogs {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .view-all-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-family: 'Livvic', sans-serif;
+        font-weight: 600;
+        color: #fff;
+        background-color: #333;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .view-all-button:hover {
+        background-color: #555;
+    }
+
+    /* Media Queries for mobile */
+    @media (max-width: 768px) {
+        .blogs-grid {
+            grid-template-columns: 1fr;
+        }
+        .blog-card {
+            text-align: center;
+        }
+    }
+    @keyframes fadeInSlideDown {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: 0;
+    }
+    .logo-img {
+        height: 40px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 0.4s forwards;
+    }
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 0.6s forwards;
+    }
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+    .logo-text h1 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    .logo-text p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #555;
+    }
+    nav {
+        display: flex;
+        gap: 1rem;
+        opacity: 0;
+        transform: translateY(-5px);
+        animation: fadeInSlideDown 0.5s ease-out 0.8s forwards;
+    }
+    nav a {
+        text-decoration: none;
+        color: #222;
+        font-weight: 500;
+        font-size: 0.9rem;
+        position: relative;
+    }
+    nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 1.5px;
+        background-color: #222;
+        transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    }
+    nav a:hover::after {
+        width: 100%;
+        left: 0;
+    }
+    .intro-bar {
+        font-size: 0.9rem;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center; /* Align items to the start */
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 1s forwards;
+        position: relative;
+        max-width: 1200px;
+        margin: 1rem auto 0;
+    }
+    .sidebar-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 3px;
+        z-index: 100; /* Ensure it's above other elements */
+        margin-right: 20px; /* Add spacing between toggle and text */
+    }
+    .sidebar-toggle div {
+        width: 18px;
+        height: 2px;
+        background-color: #333;
+    }
+    .intro-text {
+        text-align: center; /* Align text to the left */
+        flex-grow: 1;
+    }
+    .divider {
+        width: 40%;
+        height: 1.5px;
+        background: #222;
+        margin: 1rem auto 2rem auto;
+        opacity: 0;
+        animation: expandLineAndFadeIn 0.7s ease-out 1.2s forwards;
+        transform-origin: center;
+    }
+    @keyframes expandLineAndFadeIn {
+        0% {
+            width: 0%;
+            opacity: 0;
+        }
+        100% {
+            width: 60%;
+            opacity: 1;
+        }
+    }
+    .carousel {
+        position: relative;
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center;
+        overflow: hidden;
+        width: 100%; /* Let it take the full width of its container */
+        /* Adjust height as needed, consider removing or setting a fixed/min height */
+        height: 700px;
+        background: #eee;
+        margin: 0 auto; /* Center the carousel on the page */
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 1.4s forwards;
+    }
+    .carousel img {
+        max-width: 100%; /* Ensure image doesn't exceed container */
+        height: 700px;
+        object-fit: contain; /* Or cover, depending on desired effect */
+        display: block;
+    }
+    .carousel .caption {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust based on width if needed */
+        background: rgba(0,0,0,0.6);
+        color: #fff;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+        border-radius: 3px;
+        text-align: center;
+    }
+    .carousel .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        user-select: none;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 1.8s forwards;
+    }
+    .carousel .arrow.left {
+        left: 0.5rem;
+    }
+    .carousel .arrow.right {
+        right: 0.5rem;
+    }
+
+    .services-section {
+        padding: 2rem 1rem;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out 2s forwards;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .services-heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+     .services-intro-text {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .service-card {
+        background: #f9f9f9;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .service-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .service-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 0.8rem;
+        display: block;
+    }
+    .service-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.3rem;
+    }
+    .service-description {
+        font-size: 0.8rem;
+        color: #555;
+        margin-bottom: 0.8rem;
+    }
+    .service-link {
+        color: #222;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+    }
+    .service-link svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+        transition: transform 0.3s ease-in-out;
+    }
+    .service-card:hover .service-link svg {
+        transform: translateX(3px);
+    }
+
+    .why-us-section {
+        padding: 2rem 1rem;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out 2s forwards;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .why-us-heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+    .why-us-grid {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .why-us-card {
+        background: #f9f9f9;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .why-us-icon {
+        font-size: 2rem;
+        color: #555;
+        margin-bottom: 0.3rem;
+    }
+    .why-us-card h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+        color: #333;
+    }
+    .why-us-card p {
+        font-size: 0.9rem;
+        color: #555;
+        margin-top: 0;
+    }
+    .our-work-section {
+        padding: 2rem 1rem;
+        text-align: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .our-work-heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+    .our-work-collage {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem; /* Add margin below collage */
+    }
+    .collage-item {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        flex: 1 0 150px;
+        height: 150px;
+    }
+    .collage-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease-in-out;
+    }
+    .collage-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .view-more-projects {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .view-more-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-family: 'Livvic', sans-serif;
+        font-weight: 600;
+        color: #fff;
+        background-color: #333;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .view-more-button:hover {
+        background-color: #555;
+    }
+
+    /* Media Queries for larger screens */
+    @media (min-width: 1200px) {
+        .logo-img {
+            height: 60px;
+        }
+        .logo-text h1 {
+            font-size: 1.3rem;
+        }
+        .logo-text p {
+            font-size: 0.9rem;
+        }
+        nav {
+            gap: 1.5rem;
+        }
+        nav a {
+            font-size: 1rem;
+        }
+        nav a::after {
+            bottom: -3px;
+            height: 2px;
+        }
+        .intro-bar {
+            font-size: 1rem;
+            gap: 2rem;
+            padding: 1rem 2rem;
+        }
+        .sidebar-toggle {
+            gap: 4px;
+            left: 2rem;
+        }
+        .sidebar-toggle div {
+            width: 25px;
+            height: 3px;
+        }
+        .divider {
+  width: 60%;               /* or 40%, adjust as needed */
+  height: 2px;
+  background: #222;
+  margin: 1rem auto 2rem auto;  /* <-- this centers it horizontally */
+  opacity: 0;
+  animation: expandLineAndFadeIn 0.7s ease-out 1.2s forwards;
+  transform-origin: center;
+}
+        @keyframes expandLineAndFadeIn {
+            100% {
+                width: 60%;
+            }
+        }
+        .carousel {
+            height: 400px;
+            margin: 2rem 0;
+        }
+        .carousel .caption {
+            bottom: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+        .carousel .arrow {
+            font-size: 2rem;
+        }
+        .carousel .arrow.left {
+            left: 1rem;
+        }
+        .carousel .arrow.right {
+            right: 1rem;
+        }
+        .services-heading {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+         .services-intro-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            padding: 1.5rem;
+        }
+        .service-image {
+            height: 200px;
+            margin-bottom: 1rem;
+        }
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-description {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .service-link {
+            font-size: 1rem;
+            gap: 0.5rem;
+        }
+        .service-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        .service-card:hover .service-link svg {
+            transform: translateX(5px);
+        }
+        .why-us-heading {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .why-us-grid {
+            gap: 2rem;
+        }
+        .why-us-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .why-us-card h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .why-us-card p {
+            font-size: 1rem;
+        }
+        .our-work-heading {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .our-work-collage {
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .collage-item {
+            flex-basis: 200px;
+            height: 200px;
+        }
+        .collage-item:hover img {
+            transform: scale(1.1);
+        }
+        .view-more-projects {
+            margin-bottom: 5rem;
+        }
+        .view-more-button {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 10px;
+        }
+    }
+
+    /* Media Queries for mobile screens */
+    @media (max-width: 768px) {
+        header {
+            padding: 0.5rem 1rem;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-section {
+            margin-bottom: 0;
+        }
+        nav {
+            display: none;
+        }
+        .sidebar-toggle {
+            display: flex;
+            left: auto;
+            right: 1rem;
+            gap: 2px;
+        }
+        .sidebar-toggle div {
+            width: 18px;
+            height: 2px;
+        }
+        .intro-bar {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            gap: 0.5rem;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .sidebar-toggle {
+            position: static;
+            margin-bottom: 0.5rem;
+        }
+        .divider {
+            width: 80%;
+            margin: 1rem auto;
+        }
+        @keyframes expandLineAndFadeIn {
+            100% {
+                width: 80%;
+            }
+        }
+        .carousel {
+            width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+        .carousel img {
+            object-fit: cover;
+        }
+        .carousel .caption {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.5rem;
+            bottom: 0.3rem;
+        }
+        .carousel .arrow {
+            font-size: 1.2rem;
+        }
+        .services-section {
+            padding: 1.5rem 0.5rem;
+        }
+        .services-heading {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+         .services-intro-text {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        .service-card {
+            padding: 1rem;
+        }
+        .service-image {
+            height: auto;
+            max-height: 200px;
+            margin-bottom: 0.5rem;
+        }
+        .service-title {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        .service-description {
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-link {
+            font-size: 0.7rem;
+            gap: 0.2rem;
+        }
+        .service-link svg {
+            width: 12px;
+            height: 12px;
+        }
+        .why-us-section {
+            padding: 1.5rem 0.5rem;
+        }
+        .why-us-heading {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+        .why-us-grid {
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .why-us-card {
+            padding: 1rem;
+        }
+        .why-us-icon {
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+        }
+        card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+        .why-us-card p {
+            font-size: 0.8rem;
+        }
+        .our-work-section {
+            padding: 1.5rem 0.5rem;
+        }
+        .our-work-heading {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+        .our-work-collage {
+            gap: 0.3rem;
+        }
+        .collage-item {
+            flex-basis: calc(50% - 0.3rem);
+            height: 150px;
+        }
+        .view-more-projects {
+            margin-bottom: 2rem;
+        }
+        .view-more-button {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    }
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes fadeInSlideDown {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes expandLineAndFadeIn {
+        0% {
+            width: 0%;
+            opacity: 0;
+        }
+        100% {
+            width: 60%;
+            opacity: 1;
+        }
+    }
+</style>
+        </head>
+        <body>
+            <header>
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="logo-section">
+                    <img class="logo-img" src="https://assets.onecompiler.app/43hq2qws3/43hq2qckm/Imagenshape%20logo.webp" alt="Image N Shape Logo" />
+                    <div class="logo-text">
+                        <h1>Image N Shape</h1>
+                        <p>Every space has a story</p>
+                    </div>
+                </div>
             </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-        <h1 class="gradient-text">DYRE STUDIO</h1>
-        <div class="subtitle">WHERE INNOVATION MEETS EXCELLENCE</div>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number gradient-text">20+</div>
-                <div>Live Projects</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number gradient-text">100%</div>
-                <div>Client Satisfaction</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number gradient-text">5</div>
-                <div>Expert Team Members</div>
-            </div>
+    </header>
+
+    <section class="intro-bar">
+  <div class="intro-content">
+    <p class="intro-text">
+      Architectural Planner | Interior Designer | Project Management Consultant | Government Approved Valuer
+    </p>
+    <div class="divider"></div>
+  </div>
+</section>
+
+    <section class="carousel">
+  <div class="carousel-inner">
+    <div class="image-container">
+      <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image%201%20ins.webp" alt="..." class="main-image" />
+      <div class="text-overlay">
+  <h2 class="carousel-heading">Home to beautiful interiors</h2>
+  <a href="#" class="carousel-button">BOOK FREE CONSULTATION</a>
+</div>
+    </div>
+    <div class="caption">Elegant Modern Living Room</div>
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+  </div>
+</section>
+
+            <section class="services-section">
+                <h2 class="services-heading">Our Specialization in Architecture Industry</h2>
+                 <p class="services-intro-text">We Build Our Projects With Your Dreams And Ideas.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/interior.avif" alt="Design & Planning" class="service-image">
+                        <h3 class="service-title">Design & Planning</h3>
+                        <p class="service-description">View in detail</p>
+                        <a href="#" class="service-link">
+                            Learn More
+                            <svg viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/f_d.jpg" alt="Furniture & Decor" class="service-image">
+                        <h3 class="service-title">Furniture & Decor</h3>
+                        <p class="service-description">View in detail</p>
+                        <a href="#" class="service-link">
+                            Learn More
+                            <svg viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/exter.jpg" alt="Exterior Design" class="service-image">
+                        <h3 class="service-title">Exterior Design</h3>
+                        <p class="service-description"></p>
+                        <a href="#" class="service-link">
+                            Learn More
+                            <svg viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="why-us-section">
+                <h2 class="why-us-heading">Why Choose Us</h2>
+                <div class="why-us-grid">
+                    <div class="why-us-card">
+                        <div class="why-us-icon">⏳</div>
+                        <h2>25+</h2>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="why-us-icon">🏠</div>
+                        <h2>900+</h2>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="why-us-icon">🏆</div>
+                        <h2>15+</h2>
+                        <p>Awards Gained</p>
+                    </div>
+                </div>
+            </section><section class="our-work-section">
+                <h2 class="our-work-heading">Our Work & Our Legacy</h2>
+                <div class="our-work-collage">
+                    <div class="collage-item">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_5_collage.webp" alt="Image 1" />
+                    </div>
+                    <div class="collage-item">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_2_collage.webp" alt="Image 2" />
+                    </div>
+                    <div class="collage-item">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_7_collage.webp" alt="Image 4" />
+                    </div>
+                    <div class="collage-item">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_1_collage.webp" alt="Image 6" />
+                    </div>
+                    <div class="collage-item">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/interior.avif" alt="Image 8" />
+                    </div>
+                     <div class="collage-item">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_4_collage.webp" alt="Image 9" />
+                    </div>
+                    <div class="collage-item">
+                        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image%201%20ins.webp" alt="Image 10" />
+                    </div>
+                </div>
+            </section>
+            
+
+            <section class="view-more-projects">
+                <a href="#" class="view-more-button">View More Projects</a>
+            </section>
+            <section class="book-consultation-section">
+    <div class="consultation-card">
+        <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/book1.jpg" alt="Interior Design Studio" class="consultation-image">
+        <div class="consultation-content">
+            <h2 class="book-consultation-heading">Come, see endless designs at our Experience Centre</h2>
+            <p class="book-consultation-text">Walk into any of our centres in 50+ cities</p>
+            <a href="#" class="book-consultation-button">Find one near you ></a>
         </div>
     </div>
-
-    <!-- Mobile Apps Showcase -->
-    <div class="slide" id="slide2">
-        <div class="section-header">
-            <h2 class="gradient-text">Mobile Excellence</h2>
-        </div>
-        <div class="device-container">
-            <div class="device-frame left">
-                <div class="device-screen">
-                    <img src="Images\Mobile application 1.jpeg" alt="E-commerce App"/>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">multi chain blockchain wallet</div>
-                    <div class="project-title">Blockchain Application</div>
-                </div>
+</section>
+            <section class="blogs-section">
+        <h2 class="blogs-heading">Latest Blogs</h2>
+        <div class="blogs-grid">
+            <div class="blog-card">
+                <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/blog_1.webp" alt="Blog Post 1" class="blog-image">
+                <h3 class="blog-title">The Future of Modern Architecture</h3>
+                <p class="blog-excerpt">A brief look into the innovative trends shaping the architectural landscape of tomorrow...</p>
+                <a href="#" class="blog-link">Read More</a>
             </div>
-            <div class="device-frame right">
-                <div class="device-screen">
-                    <img src="Images\Mobile application 2.jpeg" alt="Fitness App"/>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">Luxury</div>
-                    <div class="project-title">Asset Management</div>
-                </div>
+            <div class="blog-card">
+                <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/blog_2.webp" alt="Blog Post 2" class="blog-image">
+                <h3 class="blog-title">Sustainable Interior Design Tips</h3>
+                <p class="blog-excerpt">Explore practical ways to create beautiful and environmentally conscious interior spaces...</p>
+                <a href="#" class="blog-link">Read More</a>
+            </div>
+            <div class="blog-card">
+                <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/blog_3.webp" alt="Blog Post 3" class="blog-image">
+                <h3 class="blog-title">Project Management Best Practices</h3>
+                <p class="blog-excerpt">Key strategies and techniques for successful project planning and execution in the design industry...</p>
+                <a href="#" class="blog-link">Read More</a>
             </div>
         </div>
-    </div>
-
-    <!-- Web Solutions -->
-    <div class="slide" id="slide3">
-        <div class="section-header">
-            <h2 class="gradient-text">Web Excellence</h2>
+        <div class="view-all-blogs">
+            <a href="#" class="view-all-button">View All Blogs</a>
         </div>
-        <div class="laptop-container">
-            <div class="laptop-frame left">
-                <div class="laptop-screen">
-                    <img src="Images\Web application 1.jpeg" alt="Enterprise System"/>
-                </div>
-                
+    </section>
+    <section class="testimonials-section">
+        <h2 class="testimonials-heading">What Our Clients Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/test1.jpg" alt="Client 1" class="testimonial-image">
+                <h3 class="testimonial-name">John Doe</h3>
+                <p class="testimonial-designation">CEO, Acme Corp</p>
+                <p class="testimonial-review">ImagemShape exceeded our expectations with their innovative design and attention to detail. Their team was professional and collaborative throughout the entire project.</p>
             </div>
-            <div class="laptop-frame right">
-                <div class="laptop-screen">
-                    <img src="Images\Web application part 2.jpeg" alt="Real Estate Portal"/>
-                </div>
-                
+            <div class="testimonial-card">
+                <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/test2.jpg" alt="Client 2" class="testimonial-image">
+                <h3 class="testimonial-name">Jane Smith</h3>
+                <p class="testimonial-designation">Homeowner</p>
+                <p class="testimonial-review">We are absolutely thrilled with the interior design ImagemShape created for our home. It's both beautiful and functional, perfectly reflecting our style.</p>
             </div>
-        </div>
-    </div>
-
-    <!-- SEO Performance -->
-    <div class="slide" id="slide4">
-        <div class="section-header">
-            <h2 class="gradient-text">SEO Performance</h2>
-        </div>
-        <div class="seo-metrics">
-            <div class="seo-card">
-                <h3>Search Rankings</h3>
-                <div class="metric-number">90%</div>
-                <div class="seo-chart"></div>
-            </div>
-            <div class="seo-card">
-                <h3>Traffic Growth</h3>
-                <div class="metric-number">150%</div>
-                <div class="seo-chart"></div>
-            </div>
-            <div class="seo-card">
-                <h3>Conversion Rate</h3>
-                <div class="metric-number">45%</div>
-                <div class="seo-chart"></div>
-            </div>
-            <div class="seo-card">
-                <h3>Page Speed</h3>
-                <div class="metric-number">98/100</div>
-                <div class="seo-chart"></div>
+            <div class="testimonial-card">
+                <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/test3.jpg" alt="Client 3" class="testimonial-image">
+                <h3 class="testimonial-name">Peter Jones</h3>
+                <p class="testimonial-designation">Project Manager, Beta Industries</p>
+                <p class="testimonial-review">The project management from ImagemShape was top-notch. They kept everything on schedule and within budget, delivering a fantastic result.</p>
             </div>
         </div>
-    </div>
-
-    <!-- Updates & Support -->
-    <div class="slide" id="slide5">
-        <div class="section-header">
-            <h2 class="gradient-text">Project Support</h2>
+    </section>
+    <section class="faq-section">
+        <h2 class="faq-heading">FAQs About Home Interior Design</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <span class="faq-number">1.</span>
+                <p class="faq-question">Why do I need an interior designer?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-number">2.</span>
+                <p class="faq-question">Why is Livspace perfect for your home interior design?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-number">3.</span>
+                <p class="faq-question">What services are included under home interior design?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-number">4.</span>
+                <p class="faq-question">How much does home interiors cost?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-number">5.</span>
+                <p class="faq-question">What will be the timelines for my project completion?</p>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-number">6.</span>
+                <p class="faq-question">What are the trending interior design styles?</p>
+                <span class="faq-toggle">+</span>
+            </div>
         </div>
-        <div class="updates-grid">
-            <div class="update-card">
-                <h4>Regular Updates</h4>
+    </section>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section about-us">
+                <h2>About Us</h2>
+                <p>Architectural Planner Interior</p>
+                <p>Designer Project</p>
+                <p>Management Consultant</p>
+                <p>Government Approved Valuer</p>
+            </div>
+            <div class="footer-section quick-links">
+                <h2>Quick Links</h2>
                 <ul>
-                    <li>Weekly Progress Reports</li>
-                    <li>Sprint Reviews</li>
-                    <li>Milestone Tracking</li>
-                    <li>Performance Analytics</li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Project</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
-            <div class="update-card">
-                <h4>Continuous Support</h4>
-                <ul>
-                    <li>24/7 Technical Assistance</li>
-                    <li>Bug Fixes & Patches</li>
-                    <li>Security Updates</li>
-                    <li>Feature Enhancements</li>
-                </ul>
-            </div>
-            <div class="update-card">
-                <h4>Quality Assurance</h4>
-                <ul>
-                    <li>Automated Testing</li>
-                    <li>Performance Optimization</li>
-                    <li>Code Reviews</li>
-                    <li>Security Audits</li>
-                </ul>
-            </div>
-            <div class="update-card">
-                <h4>Documentation</h4>
-                <ul>
-                    <li>Technical Documentation</li>
-                    <li>User Guides</li>
-                    <li>API Documentation</li>
-                    <li>Knowledge Base</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Contact Section -->
-    <div class="slide" id="slide6">
-        <div class="section-header">
-            <h2 class="gradient-text">Let's Connect</h2>
-        </div>
-        <div class="contact-container">
-            <div class="contact-card">
-                <div class="contact-header">
-                    <div class="contact-icon">✉️</div>
-                    <h3>Email Us</h3>
+            <div class="footer-section follow-us">
+                <h2>Follow us</h2>
+                <div class="social-links">
+                    <a href="#"><img src="placeholder_twitter.png" alt="Twitter"></a>
+                    <a href="#"><img src="placeholder_instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="placeholder_youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="placeholder_linkedin.png" alt="LinkedIn"></a>
                 </div>
-                <a href="mailto:lavyapunjabitglp@gmail.com" class="contact-link">
-                    lavyapunjabitglp@gmail.com
-                </a>
-            </div>
-            <div class="contact-card">
-                <div class="contact-header">
-                    <div class="contact-icon">📱</div>
-                    <h3>Call Us</h3>
+                <div class="twitter-posts">
+                    <h3>Latest Tweets</h3>
+                    <div class="twitter-scroll">
+                        <div class="tweet">
+                            <p>Excited to share our latest project showcasing innovative architectural design! #architecture #design</p>
+                            <small>1 hour ago</small>
+                        </div>
+                        <div class="tweet">
+                            <p>Tips for creating a functional and beautiful interior space. #interiordesign #homedecor</p>
+                            <small>3 hours ago</small>
+                        </div>
+                        <div class="tweet">
+                            <p>Understanding the importance of project management in successful construction. #projectmanagement</p>
+                            <small>5 hours ago</small>
+                        </div>
+                        <div class="tweet">
+                            <p>Another inspiring design concept we're working on. Stay tuned for updates! #architecturaldesign</p>
+                            <small>8 hours ago</small>
+                        </div>
+                        <div class="tweet">
+                            <p>The role of a government approved valuer in property assessment. #valuation</p>
+                            <small>10 hours ago</small>
+                        </div>
+                        </div>
                 </div>
-                <a href="tel:+916006534901" class="contact-link">
-                    +91 60065 34901
-                </a>
             </div>
         </div>
-        <div class="contact-message">
-            <p>Ready to transform your ideas into reality?</p>
-            <p>Get in touch with us today!</p>
+        <div class="footer-bottom">
+            <p>© 2024 All copyrights reserved by imagenshape</p>
         </div>
+    </footer>
+    <div class="chatbot-container">
+    <div class="chatbot-button">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWaLmzKeFkZ46kqWj37mJTGXlFaUXBUdcRsA&s" alt="Chatbot Icon">
+        <span>How can I help you today?</span>
     </div>
+</div>
 
-    <div class="navigation">
-        <button onclick="previousSlide()">Previous</button>
-        <button onclick="nextSlide()">Next</button>
+<div class="chatbot-window">
+    <div class="chatbot-header">
+        <span>How can I help you today?</span>
+        <button class="chatbot-close-button">X</button>
     </div>
+    <div class="chatbot-messages">
+        </div>
+    <div class="chatbot-input">
+        <input type="text" placeholder="Type your message...">
+        <button>Send</button>
+    </div>
+</div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+         </body>
+         </html>
