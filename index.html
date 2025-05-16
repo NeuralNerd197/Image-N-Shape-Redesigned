@@ -1,481 +1,198 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image N Shape - Redesign</title>
-  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-  body {
-  margin: 0;
-  font-family: 'Livvic', sans-serif;
-  background: #fdfdfd;
-  color: #222;
-  }
-  header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeInSlideDown 0.5s ease-out 0.2s forwards;
-  }
-  @keyframes fadeInSlideDown {
-  to {
-  opacity: 1;
-  transform: translateY(0);
-  }
-  }
-  .logo-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-left: 0;
-  }
-  .logo-img {
-  height: 60px;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.4s forwards;
-  }
-  .logo-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.6s forwards;
-  }
-  @keyframes fadeIn {
-  to {
-  opacity: 1;
-  }
-  }
-  .logo-text h1 {
-  margin: 0;
-  font-size: 1.3rem;
-  }
-  .logo-text p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #555;
-  }
-  nav {
-  display: flex;
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateY(-5px);
-  animation: fadeInSlideDown 0.5s ease-out 0.8s forwards;
-  }
-  nav a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
-  font-size: 1rem;
-  position: relative;
-  }
-  nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: #222;
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-  }
-  nav a:hover::after {
-  width: 100%;
-  left: 0;
-  }
-  .intro-bar {
-  font-size: 1rem;
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 1s forwards;
-  position: relative;
-  }
-  .sidebar-toggle {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 4px;
-  position: absolute;
-  left: 2rem;
-  }
-  .sidebar-toggle div {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  }
-  .intro-text {
-  text-align: center;
-  flex-grow: 1;
-  }
-  .divider {
-  width: 0; /* Initial width 0 */
-  height: 2px;
-  background: #222;
-  margin: 0 auto 2rem auto;
-  opacity: 0; /* Fade in with the animation */
-  animation: expandLineAndFadeIn 0.7s ease-out 1.2s forwards; /* Combined animation */
-  transform-origin: center; /* For scaling from the center */
-  }
-  @keyframes expandLineAndFadeIn {
-  0% {
-  width: 0%;
-  opacity: 0;
-  }
-  100% {
-  width: 60%; /* Final width */
-  opacity: 1;
-  }
-  }
-  .carousel {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  max-width: 100%;
-  height: 400px;
-  background: #eee;
-  margin: 2rem 0;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 1.4s forwards;
-  }
-  .carousel img {
-  max-height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  }
-  .carousel .caption {
-  position: absolute;
-  bottom: 1rem;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 1.6s forwards;
-  }
-  .carousel .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  cursor: pointer;
-  color: #333;
-  user-select: none;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 1.8s forwards;
-  }
-  .carousel .arrow.left {
-  left: 1rem;
-  }
-  .carousel .arrow.right {
-  right: 1rem;
-  }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyre Studio - Innovation Meets Excellence</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Hero Slide -->
+    <div class="slide active" id="slide1">
+        <div class="logo-container">
+            <div class="logo-inner">
+                <div class="logo-text">DYRE</div>
+                <div class="logo-line"></div>
+                <div class="logo-studio">STUDIO</div>
+            </div>
+        </div>
+        <h1 class="gradient-text">DYRE STUDIO</h1>
+        <div class="subtitle">WHERE INNOVATION MEETS EXCELLENCE</div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number gradient-text">20+</div>
+                <div>Live Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number gradient-text">100%</div>
+                <div>Client Satisfaction</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number gradient-text">5</div>
+                <div>Expert Team Members</div>
+            </div>
+        </div>
+    </div>
 
-  .services-section {
-  padding: 3rem 2rem;
-  text-align: center;
-  opacity: 0;
-  animation: fadeInUp 0.7s ease-out 2s forwards;
-  }
-  .services-heading {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 2rem;
-  }
-  .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  }
-  .service-card {
-  background: #f9f9f9;
-  padding: 1.5rem; /* Adjusted padding to match why-us card */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  text-align: center; /* Center content like why-us card */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  .service-image {
-  width: 100%; /* Make the image take the full width of the card */
-  height: 200px; /* Set a fixed height */
-  object-fit: cover; /* Ensure image covers the area */
-  border-radius: 8px 8px 0 0; /* Apply rounded corners to the top */
-  margin-bottom: 1rem;
-  display: block; /* Prevent extra space below inline elements */
-  }
-  .service-title {
-  font-size: 1.3rem; /* Adjusted font size */
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.5rem;
-  }
-  .service-description {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 1rem;
-  }
-  .service-link {
-  color: #222;
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  }
-  .service-link svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-  transition: transform 0.3s ease-in-out;
-  }
-  .service-card:hover .service-link svg {
-  transform: translateX(5px);
-  }
+    <!-- Mobile Apps Showcase -->
+    <div class="slide" id="slide2">
+        <div class="section-header">
+            <h2 class="gradient-text">Mobile Excellence</h2>
+        </div>
+        <div class="device-container">
+            <div class="device-frame left">
+                <div class="device-screen">
+                    <img src="Images\Mobile application 1.jpeg" alt="E-commerce App"/>
+                </div>
+                <div class="project-info">
+                    <div class="project-type">multi chain blockchain wallet</div>
+                    <div class="project-title">Blockchain Application</div>
+                </div>
+            </div>
+            <div class="device-frame right">
+                <div class="device-screen">
+                    <img src="Images\Mobile application 2.jpeg" alt="Fitness App"/>
+                </div>
+                <div class="project-info">
+                    <div class="project-type">Luxury</div>
+                    <div class="project-title">Asset Management</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  .why-us-section {
-  padding: 3rem 2rem;
-  text-align: center;
-  opacity: 0;
-  animation: fadeInUp 0.7s ease-out 2s forwards;
-  }
-  .why-us-heading {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 2rem;
-  }
-  .why-us-grid {
-  display: flex; /* Change to flex to arrange items in a row */
-  justify-content: space-around;
-  align-items: flex-start; /* Align items to the top */
-  flex-wrap: wrap;
-  gap: 2rem;
-  }
-  .why-us-card {
-  background: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  text-align: center;
-  display: flex; /* Change to flex */
-  flex-direction: column; /* Stack icon, number, text vertically */
-  align-items: center; /* Center items horizontally */
-  }
-  .why-us-icon {
-  font-size: 2.5rem; /* Adjust size as needed */
-  color: #555; /* Icon color */
-  margin-bottom: 0.5rem;
-  }
-  .why-us-card h2 {
-  font-size: 2rem; /* Adjust size as needed */
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #333;
-  }
-  .why-us-card p {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 0;
-  }
-  .our-work-section {
-  padding: 3rem 2rem;
-  text-align: center;
-  }
+    <!-- Web Solutions -->
+    <div class="slide" id="slide3">
+        <div class="section-header">
+            <h2 class="gradient-text">Web Excellence</h2>
+        </div>
+        <div class="laptop-container">
+            <div class="laptop-frame left">
+                <div class="laptop-screen">
+                    <img src="Images\Web application 1.jpeg" alt="Enterprise System"/>
+                </div>
+                
+            </div>
+            <div class="laptop-frame right">
+                <div class="laptop-screen">
+                    <img src="Images\Web application part 2.jpeg" alt="Real Estate Portal"/>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 
-  .our-work-heading {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 2rem;
-  }
+    <!-- SEO Performance -->
+    <div class="slide" id="slide4">
+        <div class="section-header">
+            <h2 class="gradient-text">SEO Performance</h2>
+        </div>
+        <div class="seo-metrics">
+            <div class="seo-card">
+                <h3>Search Rankings</h3>
+                <div class="metric-number">90%</div>
+                <div class="seo-chart"></div>
+            </div>
+            <div class="seo-card">
+                <h3>Traffic Growth</h3>
+                <div class="metric-number">150%</div>
+                <div class="seo-chart"></div>
+            </div>
+            <div class="seo-card">
+                <h3>Conversion Rate</h3>
+                <div class="metric-number">45%</div>
+                <div class="seo-chart"></div>
+            </div>
+            <div class="seo-card">
+                <h3>Page Speed</h3>
+                <div class="metric-number">98/100</div>
+                <div class="seo-chart"></div>
+            </div>
+        </div>
+    </div>
 
-  .our-work-collage {
-  display: flex; /* Changed to flexbox for centering */
-  flex-wrap: wrap; /* Allow images to wrap to the next line */
-  justify-content: center; /* Center the collage horizontally */
-  align-items: center; /* Center items vertically */
-  gap: 1rem; /* Space between images */
-  max-width: 80%; /* Limit the width of the collage */
-  margin: 0 auto; /* Center the collage within its container */
-  }
+    <!-- Updates & Support -->
+    <div class="slide" id="slide5">
+        <div class="section-header">
+            <h2 class="gradient-text">Project Support</h2>
+        </div>
+        <div class="updates-grid">
+            <div class="update-card">
+                <h4>Regular Updates</h4>
+                <ul>
+                    <li>Weekly Progress Reports</li>
+                    <li>Sprint Reviews</li>
+                    <li>Milestone Tracking</li>
+                    <li>Performance Analytics</li>
+                </ul>
+            </div>
+            <div class="update-card">
+                <h4>Continuous Support</h4>
+                <ul>
+                    <li>24/7 Technical Assistance</li>
+                    <li>Bug Fixes & Patches</li>
+                    <li>Security Updates</li>
+                    <li>Feature Enhancements</li>
+                </ul>
+            </div>
+            <div class="update-card">
+                <h4>Quality Assurance</h4>
+                <ul>
+                    <li>Automated Testing</li>
+                    <li>Performance Optimization</li>
+                    <li>Code Reviews</li>
+                    <li>Security Audits</li>
+                </ul>
+            </div>
+            <div class="update-card">
+                <h4>Documentation</h4>
+                <ul>
+                    <li>Technical Documentation</li>
+                    <li>User Guides</li>
+                    <li>API Documentation</li>
+                    <li>Knowledge Base</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div class="slide" id="slide6">
+        <div class="section-header">
+            <h2 class="gradient-text">Let's Connect</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="contact-header">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email Us</h3>
+                </div>
+                <a href="mailto:lavyapunjabitglp@gmail.com" class="contact-link">
+                    lavyapunjabitglp@gmail.com
+                </a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-header">
+                    <div class="contact-icon">📱</div>
+                    <h3>Call Us</h3>
+                </div>
+                <a href="tel:+916006534901" class="contact-link">
+                    +91 60065 34901
+                </a>
+            </div>
+        </div>
+        <div class="contact-message">
+            <p>Ready to transform your ideas into reality?</p>
+            <p>Get in touch with us today!</p>
+        </div>
+    </div>
 
-  .collage-item {
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex: 1 0 200px; /* Distribute space evenly, minimum width 200px */
-  height: 200px; /* Fixed height for consistent image display */
-  }
+    <div class="navigation">
+        <button onclick="previousSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
 
-  .collage-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure images fill the frame */
-  display: block;
-  transition: transform 0.3s ease-in-out;
-  }
-
-  .collage-item:hover img {
-  transform: scale(1.1);
-  }
-
-  @keyframes fadeInUp {
-  to {
-  opacity: 1;
-  transform: translateY(0);
-  }
-  from {
-  opacity: 0;
-  transform: translateY(30px);
-  }
-  }
-  </style>
- </head>
- <body>
-  <header>
-  <div style="display: flex; align-items: center; gap: 1rem;">
-  <div class="logo-section">
-  <img class="logo-img" src="https://assets.onecompiler.app/43hq2qws3/43hq2qckm/Imagenshape%20logo.webp" alt="Image N Shape Logo" />
-  <div class="logo-text">
-  <h1>Image N Shape</h1>
-  <p>Every space has a story</p>
-  </div>
-  </div>
-  </div>
-
-  <nav>
-  <a href="#home">Home</a>
-  <a href="#projects">Projects</a>
-  <a href="#services">Services</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  </nav>
-  </header>
-
-  <section class="intro-bar">
-  <div class="sidebar-toggle">
-  <div></div>
-  <div></div>
-  <div></div>
-  </div>
-  <div class="intro-text">
-  Architectural Planner | Interior Designer | Project Management Consultant | Government Approved Valuer
-  </div>
-  </section>
-  <div class="divider"></div>
-
-  <section class="carousel">
-  <div class="arrow left">&#10094;</div>
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image%201%20ins.webp" alt="Project Image" />
-  <div class="caption">Elegant Modern Living Room</div>
-  <div class="arrow right">&#10095;</div>
-  </section>
-
-  <section class="services-section">
-  <h2 class="services-heading">Our Specialization in Architecture Industry</h2>
-  <div class="services-grid">
-  <div class="service-card">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/interior.avif" alt="Design & Planning" class="service-image">
-  <h3 class="service-title">Design & Planning</h3>
-  <p class="service-description">View in detail</p>
-  <a href="#" class="service-link">
-  Learn More
-  <svg viewBox="0 0 24 24">
-  <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-  </svg>
-  </a>
-  </div>
-  <div class="service-card">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/f_d.jpg" alt="Furniture & Decor" class="service-image">
-  <h3 class="service-title">Furniture & Decor</h3>
-  <p class="service-description">View in detail</p>
-  <a href="#" class="service-link">
-  Learn More
-  <svg viewBox="0 0 24 24">
-  <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-  </svg>
-  </a>
-  </div>
-  <div class="service-card">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/exter.jpg" alt="Exterior Design" class="service-image">
-  <h3 class="service-title">Exterior Design</h3>
-  <p class="service-description"></p>
-  <a href="#" class="service-link">
-  Learn More
-  <svg viewBox="0 0 24 24">
-  <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-  </svg>
-  </a>
-  </div>
-  </div>
-  </section>
-
-  <section class="why-us-section">
-  <h2 class="why-us-heading">Why Choose Us</h2>
-  <div class="why-us-grid">
-  <div class="why-us-card">
-  <div class="why-us-icon">⏳</div>
-  <h2>25+</h2>
-  <p>Years Experience</p>
-  </div>
-  <div class="why-us-card">
-  <div class="why-us-icon">🏠</div>
-  <h2>900+</h2>
-  <p>Projects Completed</p>
-  </div>
-  <div class="why-us-card">
-  <div class="why-us-icon">🏆</div>
-  <h2>15+</h2>
-  <p>Awards Gained</p>
-  </div>
-  </div>
-  </section><section class="our-work-section">
-  <h2 class="our-work-heading">Our Work & Our Legacy</h2>
-  <div class="our-work-collage">
-  <div class="collage-item">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_5_collage.webp" alt="Image 1" />
-  </div>
-  <div class="collage-item">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_2_collage.webp" alt="Image 2" />
-  </div>
-  <div class="collage-item">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_7_collage.webp" alt="Image 4" />
-  </div>
-  <div class="collage-item">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_1_collage.webp" alt="Image 6" />
-  </div>
-  <div class="collage-item">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/interior.avif" alt="Image 8" />
-  </div>
-   <div class="collage-item">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image_4_collage.webp" alt="Image 9" />
-  </div>
-  <div class="collage-item">
-  <img src="https://assets.onecompiler.app/43hq2qws3/43hq2t8dt/image%201%20ins.webp" alt="Image 10" />
-  </div>
-  </div>
-  </section>
-  
-
- </body>
- </html>
+    <script src="script.js"></script>
+</body>
+</html>
