@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Elegant Living Room - Image N Shape</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+
+margin: 0;
+
+font-family: 'Livvic', sans-serif;
+
+background: #fdfdfd;
+
+color: #222;
+
+padding-top: 85px; /* Reduced from 95px to decrease gap */
+
+}
+
+.header {
+
+position: fixed;
+
+top: 0;
+
+left: 0;
+
+width: 100%;
+
+z-index: 1000;
+
+background: #fff;
+
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.header-inner {
+
+max-width: 1200px;
+
+margin: 0 auto;
+
+padding: 1rem 2rem;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+}
+
+.logo-section {
+
+display: flex;
+
+align-items: center;
+
+gap: 1rem;
+
+margin-left: 0;
+
+}
+
+.logo-img {
+
+height: 40px;
+
+}
+
+.logo-text {
+
+display: flex;
+
+flex-direction: column;
+
+align-items: flex-start;
+
+}
+
+.logo-text h1 {
+
+margin: 0;
+
+font-size: 1.2rem;
+
+}
+
+.logo-text p {
+
+margin: 0;
+
+font-size: 0.8rem;
+
+color: #555;
+
+}
+
+nav {
+
+display: flex;
+
+gap: 1rem;
+
+}
+
+nav a {
+
+text-decoration: none;
+
+color: #222;
+
+font-weight: 500;
+
+font-size: 0.9rem;
+
+}
+
+.project-detail-container {
+
+max-width: 1200px;
+
+margin: 0 auto; /* Removed top margin to decrease the gap */
+
+padding: 1rem 2rem; /* Reduced from 2rem to decrease the gap */
+
+}
+
+.project-title-main {
+
+font-size: 2.5rem;
+
+font-weight: bold;
+
+color: #333;
+
+margin-top: 0.5rem; /* Reduced from 1.5rem to decrease the gap */
+
+margin-bottom: 1.5rem;
+
+text-align: center;
+
+}
+
+.main-image-container {
+
+position: relative;
+
+width: 100%;
+
+max-height: 600px; /* Adjust as needed */
+
+overflow: hidden;
+
+border-radius: 8px;
+
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+margin-bottom: 2rem;
+
+}
+
+.main-image {
+
+width: 100%;
+
+height: auto;
+
+display: block;
+
+object-fit: contain; /* Show the whole image */
+
+}
+
+.image-story-embedded {
+
+position: absolute;
+
+bottom: 20px;
+
+left: 20px;
+
+background-color: rgba(0, 0, 0, 0.7);
+
+color: white;
+
+padding: 10px;
+
+border-radius: 5px;
+
+font-weight: bold;
+
+font-size: 1.1rem;
+
+z-index: 2;
+
+}
+
+.thumbnail-grid {
+
+display: grid;
+
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust thumbnail size */
+
+gap: 15px;
+
+margin-bottom: 2rem;
+
+}
+
+.thumbnail-frame {
+
+width: 100%;
+
+aspect-ratio: 16 / 9; /* Adjust thumbnail aspect ratio */
+
+overflow: hidden;
+
+border-radius: 5px;
+
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+cursor: pointer;
+
+transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added hover effects */
+
+}
+
+.thumbnail-frame:hover {
+
+transform: translateY(-2px);
+
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+
+}
+
+.thumbnail-frame img {
+
+width: 100%;
+
+height: 100%;
+
+object-fit: cover;
+
+transition: transform 0.3s ease-in-out;
+
+}
+
+.thumbnail-frame:hover img {
+
+transform: scale(1.05);
+
+}
+
+.interaction-section {
+
+border-top: 1px solid #eee;
+
+padding-top: 2rem;
+
+margin-bottom: 2rem;
+
+display: flex;
+
+flex-direction: column;
+
+gap: 1.5rem;
+
+}
+
+.like-comment-views {
+
+display: flex;
+
+align-items: center;
+
+gap: 20px;
+
+font-size: 0.9rem;
+
+color: #777; /* Updated color */
+
+}
+
+.like-button {
+
+background-color: #f8f8f8; /* Updated background */
+
+color: #333;
+
+border: 1px solid #ddd; /* Added border */
+
+padding: 8px 15px; /* Adjusted padding */
+
+border-radius: 5px;
+
+cursor: pointer;
+
+font-weight: bold;
+
+transition: background-color 0.3s ease;
+
+}
+
+.like-button:hover {
+
+background-color: #e8e8e8;
+
+}
+
+.comment-section h3 {
+
+font-size: 1.4rem;
+
+color: #333;
+
+margin-bottom: 1rem;
+
+}
+
+.comment-input textarea {
+
+padding: 10px;
+
+border: 1px solid #ccc;
+
+border-radius: 5px;
+
+font-size: 1rem;
+
+min-height: 80px;
+
+width: 100%; /* Make textarea full width */
+
+box-sizing: border-box; /* Include padding and border in element's total width and height */
+
+margin-bottom: 0.5rem; /* Add some space below the textarea */
+
+}
+
+.comment-input button {
+
+background-color: #007bff;
+
+color: white;
+
+border: none;
+
+padding: 10px 20px;
+
+border-radius: 5px;
+
+cursor: pointer;
+
+font-weight: bold;
+
+align-self: flex-start;
+
+transition: background-color 0.3s ease;
+
+}
+
+.comment-input button:hover {
+
+background-color: #0056b3;
+
+}
+
+.existing-comments h3 {
+
+font-size: 1.4rem;
+
+color: #333;
+
+margin-top: 1.5rem;
+
+margin-bottom: 1rem;
+
+}
+
+.comment {
+
+background-color: #f9f9f9;
+
+padding: 15px;
+
+border-radius: 5px;
+
+border-left: 3px solid #007bff;
+
+margin-bottom: 0.75rem; /* Add spacing between comments */
+
+}
+
+.comment-author {
+
+font-weight: bold;
+
+margin-bottom: 0.5rem;
+
+color: #555;
+
+}
+
+.comment-text {
+
+font-size: 1rem;
+
+line-height: 1.6;
+
+color: #444; /* Slightly darker comment text */
+
+}
+
+/* Appointment Form Floater */
+
+.appointment-form-floater {
+
+position: fixed;
+
+bottom: 30px;
+
+right: 30px;
+
+background-color: #f8f8f8;
+
+color: #333;
+
+padding: 20px;
+
+border-radius: 8px;
+
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+z-index: 1002; /* Above other content */
+
+font-size: 0.9rem;
+
+opacity: 0;
+
+transform: translateY(20px);
+
+transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+width: 300px; /* Adjust width as needed */
+
+box-sizing: border-box;
+
+}
+
+.appointment-form-floater.show {
+
+opacity: 1;
+
+transform: translateY(0);
+
+}
+
+.appointment-form-floater h3 {
+
+font-size: 1.2rem;
+
+font-weight: bold;
+
+margin-top: 0;
+
+margin-bottom: 1rem;
+
+color: #333;
+
+text-align: center;
+
+}
+
+.appointment-form-floater label {
+
+display: block;
+
+margin-bottom: 0.5rem;
+
+color: #555;
+
+}
+
+.appointment-form-floater input[type="text"],
+
+.appointment-form-floater input[type="email"],
+
+.appointment-form-floater input[type="tel"] {
+
+width: calc(100% - 12px);
+
+padding: 8px;
+
+margin-bottom: 1rem;
+
+border: 1px solid #ccc;
+
+border-radius: 4px;
+
+box-sizing: border-box;
+
+font-size: 0.9rem;
+
+}
+
+.appointment-form-floater input[type="checkbox"] {
+
+margin-right: 0.5rem;
+
+}
+
+.appointment-form-floater .whatsapp-update {
+
+margin-bottom: 1rem;
+
+color: #555;
+
+display: flex;
+
+align-items: center;
+
+}
+
+.appointment-form-floater button[type="submit"] {
+
+background-color: #d37d28; /* Match the original floater color */
+
+color: white;
+
+border: none;
+
+padding: 10px 15px;
+
+border-radius: 5px;
+
+cursor: pointer;
+
+font-weight: bold;
+
+font-size: 1rem;
+
+width: 100%;
+
+transition: background-color 0.3s ease;
+
+}
+
+.appointment-form-floater button[type="submit"]:hover {
+
+background-color: #b0651a;
+
+}
+
+.appointment-form-floater .close-button {
+
+position: absolute;
+
+top: 5px;
+
+right: 5px;
+
+background: none;
+
+border: none;
+
+color: #777;
+
+font-size: 1.2rem;
+
+cursor: pointer;
+
+padding: 0;
+
+line-height: 1;
+
+}
+
+.appointment-form-floater .close-button:hover {
+
+color: #333;
+
+}
+
+.appointment-form-floater .disclaimer {
+
+font-size: 0.7rem;
+
+color: #777;
+
+margin-top: 0.5rem;
+
+text-align: center;
+
+}
+
+/* Footer Styles */
+
+.main-footer {
+
+background-color: #222;
+
+color: #fff;
+
+padding: 2rem 1rem;
+
+text-align: left;
+
+opacity: 0;
+
+animation: fadeInUp 0.7s ease-out 2.4s forwards;
+
+}
+
+.footer-content {
+
+display: grid;
+
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+gap: 2rem;
+
+max-width: 1200px;
+
+margin: 0 auto;
+
+}
+
+.footer-section {
+
+margin-bottom: 2rem;
+
+}
+
+.footer-section h2 {
+
+font-size: 1.2rem;
+
+font-weight: 600;
+
+color: #eee;
+
+margin-bottom: 1rem;
+
+}
+
+.about-us p {
+
+font-size: 0.9rem;
+
+line-height: 1.6;
+
+}
+
+.quick-links ul {
+
+list-style: none;
+
+padding: 0;
+
+margin: 0;
+
+}
+
+.quick-links ul li {
+
+margin-bottom: 0.5rem;
+
+}
+
+.quick-links ul li a {
+
+color: #ddd;
+
+text-decoration: none;
+
+font-size: 0.9rem;
+
+transition: color 0.3s ease-in-out;
+
+}
+
+.quick-links ul li a:hover {
+
+color: #fff;
+
+}
+
+.follow-us .social-links {
+
+display: flex;
+
+gap: 0.5rem;
+
+margin-bottom: 1rem;
+
+}
+
+.follow-us .social-links img {
+
+width: 30px;
+
+height: 30px;
+
+border-radius: 50%;
+
+background-color: #333;
+
+}
+
+.twitter-posts h3 {
+
+font-size: 1rem;
+
+font-weight: 600;
+
+color: #eee;
+
+margin-bottom: 0.5rem;
+
+}
+
+.twitter-scroll {
+
+background-color: #333;
+
+border-radius: 4px;
+
+max-height: 150px;
+
+overflow-y: auto;
+
+padding: 0.5rem;
+
+font-size: 0.8rem;
+
+}
+
+.tweet {
+
+padding: 0.5rem 0;
+
+border-bottom: 1px solid #444;
+
+}
+
+.tweet:last-child {
+
+border-bottom: none;
+
+}
+
+.tweet p {
+
+margin: 0 0 0.3rem 0;
+
+line-height: 1.4;
+
+}
+
+.tweet small {
+
+color: #777;
+
+display: block;
+
+}
+
+.footer-bottom {
+
+text-align: center;
+
+padding-top: 1rem;
+
+border-top: 1px solid #333;
+
+max-width: 1200px;
+
+margin: 0 auto;
+
+font-size: 0.8rem;
+
+}
+
+/* Animations */
+
+@keyframes fadeInUp {
+
+to {
+
+opacity: 1;
+
+transform: translateY(0);
+
+}
+
+from {
+
+opacity: 0;
+
+transform: translateY(30px);
+
+}
+
+}
+
+/* Active thumbnail indicator */
+.thumbnail-frame.active {
+  border: 2px solid #007bff;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="header-inner">
+
+<div class="logo-section">
+
+<img class="logo-img" src="https://assets.onecompiler.app/43hq2qws3/43hq2qckm/Imagenshape%20logo.webp" alt="Image N Shape Logo" />
+
+<div class="logo-text">
+
+<h1>Image N Shape</h1>
+
+<p>Every space has a story</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<a href="#home">Home</a><a href="#projects">Projects</a>
+
+<a href="#services">Services</a>
+
+<a href="#about">About</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<div class="project-detail-container">
+
+<h1 class="project-title-main">Elegant Living Room</h1>
+
+<div class="main-image-container">
+
+<img src="https://www.imagenshape.com/storage/app/public/media/project/1713009794_Chiatnya%20Vilas%20%20(16).JPG" alt="Main Project Image" class="main-image">
+
+<div class="image-story-embedded"><b>Project Highlight: Elegant Living Room</b></div>
+
+</div>
+
+<div class="thumbnail-grid">
+
+<div class="thumbnail-frame active" data-src="https://www.imagenshape.com/storage/app/public/media/project/1713009794_Chiatnya%20Vilas%20%20(16).JPG" data-story="<b>Project Highlight: Elegant Living Room</b>">
+
+<img src="https://www.imagenshape.com/storage/app/public/media/project/1713009794_Chiatnya%20Vilas%20%20(16).JPG" alt="Thumbnail 1">
+
+</div>
+
+<div class="thumbnail-frame" data-src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(23).JPG" data-story="<b>Spacious and Bright Kitchen Design</b>">
+
+<img src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(23).JPG" alt="Thumbnail 2">
+
+</div>
+
+<div class="thumbnail-frame" data-src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(25).JPG" data-story="<b>Modern Dining Area</b>">
+
+<img src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(25).JPG" alt="Thumbnail 3">
+
+</div>
+
+<div class="thumbnail-frame" data-src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(35).JPG" data-story="<b>Welcoming Entryway Design</b>">
+
+<img src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(35).JPG" alt="Thumbnail 4">
+
+</div>
+
+<div class="thumbnail-frame" data-src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chiatnya%20Vilas%20%20(20).JPG" data-story="<b>Comfortable Master Bedroom</b>">
+
+<img src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chiatnya%20Vilas%20%20(20).JPG" alt="Thumbnail 5">
+
+</div>
+
+<div class="thumbnail-frame" data-src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chiatnya%20Vilas%20%20(13).JPG" data-story="<b>Stylish Bathroom Design</b>">
+
+<img src="https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chiatnya%20Vilas%20%20(13).JPG" alt="Thumbnail 6">
+
+</div>
+
+</div>
+
+<section class="interaction-section">
+
+<div class="like-comment-views">
+
+<button class="like-button">Like (123)</button>
+
+<span>Views: 4,567</span>
+
+</div>
+
+<div class="comment-section">
+
+<h3>Leave a Comment</h3>
+
+<div class="comment-input">
+
+<textarea placeholder="Your thoughts..."></textarea>
+
+<button>Post Comment</button>
+
+</div>
+
+</div>
+
+<div class="existing-comments">
+
+<h3>Comments</h3>
+
+<div class="comment">
+
+<div class="comment-author">John Doe</div>
+
+<p class="comment-text">Absolutely stunning design!</p>
+
+</div>
+
+<div class="comment">
+
+<div class="comment-author">Jane Smith</div>
+
+<p class="comment-text">I love the color palette used here.</p>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<footer class="main-footer">
+
+<div class="footer-content">
+
+<div class="footer-section about-us">
+
+<h2>About Us</h2>
+
+<p>Architectural Planner Interior</p>
+
+<p>Designer Project</p>
+
+<p>Management Consultant</p>
+
+<p>Government Approved Valuer</p>
+
+</div>
+
+<div class="footer-section quick-links">
+
+<h2>Quick Links</h2>
+
+<ul>
+
+<li><a href="#">About Us</a></li>
+
+<li><a href="#">Services</a></li>
+
+<li><a href="#">Project</a></li>
+
+<li><a href="#">Blog</a></li>
+
+<li><a href="#">Privacy Policy</a></li>
+
+<li><a href="#">Terms of Service</a></li>
+
+<li><a href="#">Contact Us</a></li>
+
+</ul>
+
+</div>
+
+<div class="footer-section follow-us">
+
+<h2>Follow us</h2>
+
+<div class="social-links">
+
+<a href="#"><img src="placeholder_twitter.png" alt="Twitter"></a>
+
+<a href="#"><img src="placeholder_instagram.png" alt="Instagram"></a>
+
+<a href="#"><img src="placeholder_youtube.png" alt="YouTube"></a>
+
+<a href="#"><img src="placeholder_linkedin.png" alt="LinkedIn"></a>
+
+</div>
+
+<div class="twitter-posts">
+
+<h3>Latest Tweets</h3>
+
+<div class="twitter-scroll">
+
+<div class="tweet">
+
+<p>Excited to share our latest project showcasing innovative architectural design! #architecture #design</p>
+
+<small>1 hour ago</small>
+
+</div>
+
+<div class="tweet">
+
+<p>Tips for creating a functional and beautiful interior space. #interiordesign #homedecor</p>
+
+<small>3 hours ago</small>
+
+</div>
+
+<div class="tweet">
+
+<p>Understanding the importance of project management in successful construction. #projectmanagement</p>
+
+<small>5 hours ago</small>
+
+</div>
+
+<div class="tweet">
+
+<p>Another inspiring design concept we're working on. Stay tuned for updates! #architecturaldesign</p>
+
+<small>8 hours ago</small>
+
+</div>
+
+<div class="tweet">
+
+<p>The role of a government approved valuer in property assessment. #valuation</p>
+
+<small>10 hours ago</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>© 2024 All copyrights reserved by imagenshape</p>
+
+</div>
+
+</footer>
+
+<div class="appointment-form-floater">
+
+<button class="close-button">&times;</button>
+
+<h3>Get a Free Quote</h3>
+
+<form>
+
+<label for="name">Name:</label>
+
+<input type="text" id="name" name="name" required>
+
+<label for="email">Email ID:</label>
+
+<input type="email" id="email" name="email" required>
+
+<label for="phone">Phone number:</label>
+
+<input type="tel" id="phone" name="phone">
+
+<label for="property">Property Name:</label>
+
+<input type="text" id="property" name="property">
+
+<div class="whatsapp-update">
+
+<input type="checkbox" id="whatsapp" name="whatsapp">
+
+<label for="whatsapp">Send me updates on WhatsApp</label>
+
+</div>
+
+<button type="submit">GET FREE QUOTE</button>
+
+</form>
+
+<p class="disclaimer">By submitting this form, you agree to the privacy policy & terms and conditions.</p>
+
+</div>
+
+<script>
+// Appointment floater functionality
+const appointmentFloater = document.querySelector('.appointment-form-floater');
+const closeButton = document.querySelector('.appointment-form-floater .close-button');
+
+setTimeout(() => {
+  if (appointmentFloater) {
+    appointmentFloater.classList.add('show');
+  }
+}, 5000);
+
+if (closeButton && appointmentFloater) {
+  closeButton.addEventListener('click', () => {
+    appointmentFloater.classList.remove('show');
+  });
+}
+
+// Thumbnail click functionality to change main image
+const thumbnails = document.querySelectorAll('.thumbnail-frame');
+const mainImage = document.querySelector('.main-image');
+const imageStory = document.querySelector('.image-story-embedded');
+
+// Add click event listeners to all thumbnails
+thumbnails.forEach(thumbnail => {
+  thumbnail.addEventListener('click', function() {
+    // Update main image and story
+    if (mainImage && imageStory) {
+      // Get image source and story from data attributes
+      const imgSrc = this.getAttribute('data-src');
+      const imgStory = this.getAttribute('data-story');
+      
+      // Update main image and story
+      mainImage.src = imgSrc;
+      imageStory.innerHTML = imgStory;
+      
+      // Update active class
+      thumbnails.forEach(item => item.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Stop the automatic slider when user manually changes images
+      clearInterval(sliderInterval);
+    }
+  });
+});
+
+// Automatic image slider functionality
+const projectImages = [
+  { 
+    src: 'https://www.imagenshape.com/storage/app/public/media/project/1713009794_Chiatnya%20Vilas%20%20(16).JPG', 
+    story: '<b>Project Highlight: Elegant Living Room</b>' 
+  },
+  { 
+    src: 'https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(23).JPG',
+    story: '<b>Spacious and Bright Kitchen Design</b>' 
+  },
+  { 
+    src: 'https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(25).JPG', 
+    story: '<b>Modern Dining Area</b>' 
+  },
+  { 
+    src: 'https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chaintanya%20Villa%20(35).JPG', 
+    story: '<b>Welcoming Entryway Design</b>' 
+  },
+  { 
+    src: 'https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chiatnya%20Vilas%20%20(20).JPG', 
+    story: '<b>Comfortable Master Bedroom</b>' 
+  },
+  { 
+    src: 'https://www.imagenshape.com/storage/app/public/media/project/1713009795_Chiatnya%20Vilas%20%20(13).JPG', 
+    story: '<b>Stylish Bathroom Design</b>' 
+  }
+];
+
+let currentImageIndex = 0;
+const intervalTime = 5000; // Increased from 3000 to 5000 for better user experience
+
+function changeMainImage() {
+  if (mainImage && imageStory) {
+    mainImage.src = projectImages[currentImageIndex].src;
+    imageStory.innerHTML = projectImages[currentImageIndex].story;
+    
+    // Update active thumbnail
+    thumbnails.forEach(thumbnail => {
+      if (thumbnail.getAttribute('data-src') === projectImages[currentImageIndex].src) {
+        thumbnails.forEach(item => item.classList.remove('active'));
+        thumbnail.classList.add('active');
+      }
+    });
+    
+    currentImageIndex = (currentImageIndex + 1) % projectImages.length;
+  }
+}
+
+// Start the automatic slider
+const sliderInterval = setInterval(changeMainImage, intervalTime);
+</script>
+
+</body>
+
+</html>
