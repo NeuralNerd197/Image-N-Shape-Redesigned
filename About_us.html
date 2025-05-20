@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Image N Shape</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Livvic', sans-serif; background-color: #fdfdfd; color: #222; }
+    .glass {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glow {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-white to-slate-100">
+
+<header class="fixed top-0 left-0 w-full z-50 bg-white shadow-md animate-fade-in">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <img src="https://assets.onecompiler.app/43hq2qws3/43hq2qckm/Imagenshape%20logo.webp" alt="Logo" class="h-10">
+      <div class="flex flex-col">
+        <h1 class="text-lg font-bold leading-5">Image N Shape</h1>
+        <p class="text-xs text-gray-500">Every space has a story</p>
+      </div>
+    </div>
+    <nav class="flex gap-6 text-sm font-medium text-gray-700">
+      <a href="index.html" class="hover:text-black">Home</a>
+      <a href="projects-main.html" class="hover:text-black">Projects</a>
+      <a href="services.html" class="hover:text-black">Services</a>
+      <a href="#" class="text-red-600 font-semibold">About Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Add spacing to account for fixed header -->
+<div class="pt-24"></div>
+
+<!-- Hero Section with animated overlay -->
+<section class="relative h-[90vh] bg-cover bg-center flex items-center justify-center" style="background-image: url('https://yourimageurl.com/header.jpg');">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="relative z-10 text-center text-white animate-fade-in">
+    <h1 class="text-6xl font-bold tracking-wider drop-shadow-xl">About Us</h1>
+    <p class="mt-6 text-xl max-w-2xl mx-auto opacity-90">Spaces that breathe. Stories that live. Designs beyond imagination.</p>
+  </div>
+</section>
+
+<!-- Company Overview in glass box -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <div class="glass glow p-10 rounded-3xl grid md:grid-cols-2 gap-10 items-center">
+    <img src="https://www.imagenshape.com/storage/app/public/media/about/aboutus-img.jpg" alt="Studio Image" class="rounded-xl shadow-2xl">
+    <div>
+      <h2 class="text-4xl font-bold mb-6 text-slate-800">Who We Are</h2>
+      <p class="text-slate-700 leading-relaxed text-lg">Image N Shape crafts emotional architecture — tailored, timeless, and technologically elevated. From boutique homes to global spaces, our journey weaves nature and narrative into sustainable, stunning environments.</p>
+      <a href="#" class="inline-flex items-center mt-6 px-6 py-3 border-2 border-black rounded-full hover:bg-black hover:text-white transition text-lg">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+        Download Profile
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Founder Section with subtle animation -->
+<section class="relative py-24 bg-white overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <img src="https://www.imagenshape.com/storage/app/public/media/about/1716622959_Sanjay%20Punjabi.JPG" class="rounded-2xl shadow-2xl">
+    <div class="animate-fade-up">
+      <h2 class="text-3xl font-bold text-slate-800 mb-2">Sanjay Punjabi</h2>
+      <p class="text-orange-600 font-semibold text-lg mb-4">Chief Designer</p>
+      <p class="text-slate-700 text-lg leading-loose">A visionary driven by intellect and intuition, Sanjay Punjabi merges artistic spirit with engineering expertise. With over two decades of design mastery, he is committed to conscious creativity rooted in sustainability and human emotion.</p>
+      <div class="flex gap-6 mt-6 text-base">
+        <a href="mailto:sp@imagenshape.com" class="text-blue-600 hover:underline">sp@imagenshape.com</a>
+        <span class="text-red-600">9024115004</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Achievements Carousel -->
+<section class="bg-slate-100 py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Milestones & Accolades</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-2xl shadow-md p-6 transition hover:scale-[1.02]">
+        <h4 class="text-xl font-semibold text-slate-800 mb-2">City Advisory for Climate Change</h4>
+        <p class="text-sm text-slate-600">Led transformation projects with Rockefeller Foundation focused on urban sustainability.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 transition hover:scale-[1.02]">
+        <h4 class="text-xl font-semibold text-slate-800 mb-2">TIET Innovation Champion</h4>
+        <p class="text-sm text-slate-600">Spearheaded MSME engagement programs fostering entrepreneurship in South Gujarat.</p>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+  </div>
+</section>
+
+<!-- Expert Team with inactive dot indicator and social icons -->
+<section class="bg-gradient-to-tr from-slate-100 to-white py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Meet the Minds</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+
+      <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition team-card">
+        <img src="https://www.imagenshape.com/storage/app/public/media/team/1713008212_Nilam%20Goadhani.jpg" alt="Nilam Godhani" class="w-full h-72 object-cover">
+        <div class="absolute top-2 right-2 w-4 h-4 bg-red-600 rounded-full border-2 border-white" title="Not currently working"></div>
+        <div class="p-4 text-center">
+          <h4 class="text-lg font-semibold">Nilam Godhani</h4>
+          <p class="text-sm text-slate-500">Architect</p>
+          <div class="mt-2 flex justify-center gap-4 hover-icons">
+            <a href="mailto:nilam@example.com" class="text-gray-500 hover:text-black"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/nilam" class="text-gray-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/nilam" class="text-gray-500 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition team-card">
+        <img src="https://www.imagenshape.com/storage/app/public/media/team/1713008239_Devyani%20Patel.jpeg" alt="Devyani Patel" class="w-full h-72 object-cover">
+        <div class="p-4 text-center">
+          <h4 class="text-lg font-semibold">Devyani Patel</h4>
+          <p class="text-sm text-slate-500">Interior Designer</p>
+          <div class="mt-2 flex justify-center gap-4 hover-icons">
+            <a href="mailto:devyani@example.com" class="text-gray-500 hover:text-black"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/devyani" class="text-gray-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/devyani" class="text-gray-500 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition team-card">
+        <img src="https://www.imagenshape.com/storage/app/public/media/team/1713010506_Hemlata%20Maam.jpeg" class="w-full h-72 object-cover">
+        <div class="p-4 text-center">
+          <h4 class="text-lg font-semibold">Dr. Hemlata Agarwal</h4>
+          <p class="text-sm text-slate-500">HR Support (Associate)</p>
+          <div class="mt-2 flex justify-center gap-4 hover-icons">
+            <a href="mailto:hemlata@example.com" class="text-gray-500 hover:text-black"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/hemlata" class="text-gray-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/hemlata" class="text-gray-500 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-100 py-10 mt-10 animate-fade-in-up">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-sm">
+    <div>
+      <h2 class="text-lg font-semibold mb-2">About Us</h2>
+      <p class="text-gray-400">Designing meaningful spaces through emotion, intention, and sustainability.</p>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold mb-2">Quick Links</h2>
+      <ul class="space-y-2">
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
+        <li><a href="projects-main.html" class="hover:text-white">Projects</a></li>
+        <li><a href="services.html" class="hover:text-white">Services</a></li>
+        <li><a href="#" class="hover:text-white">About Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold mb-2">Follow Us</h2>
+      <div class="flex gap-3">
+        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold mb-2">Contact</h2>
+      <p class="text-gray-400">Email: contact@imagenshape.com</p>
+      <p class="text-gray-400">Phone: +91 9024115004</p>
+    </div>
+  </div>
+  <div class="text-center text-xs text-gray-500 mt-6">&copy; 2025 Image N Shape. All rights reserved.</div>
+</footer>
+
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
